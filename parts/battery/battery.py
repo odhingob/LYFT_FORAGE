@@ -6,20 +6,20 @@ class Battery(ABC):
         pass
 
 class SpindlerBattery(Battery):
-    def __init__(self) -> None:
+    def __init__(self, last_service_date, current_date) -> None:
         self._last_service_date = last_service_date
         self._current_date = current_date
 
     def needs_service(self) -> bool:
         threshold = self._last_service_date.replace(year=self._last_service_date.year + 2)
-        return threshold < current_date 
+        return threshold < self._current_date 
 
 class NubbinBattery(Battery):
-    def __init__(self) -> None:
+    def __init__(self, last_service_date, current_date) -> None:
         self._last_service_date = last_service_date
         self._current_date = current_date
 
     def needs_service(self) -> bool:
         threshold = self._last_service_date.replace(year=self._last_service_date.year + 4)
-        return threshold < current_date 
+        return threshold < self._current_date 
 
